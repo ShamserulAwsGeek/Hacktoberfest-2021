@@ -1,0 +1,7 @@
+cd /etc/pki/tls/private/
+sudo cp custom.key custom.key.bak
+sudo openssl rsa -in custom.key -passin pass:abcde12345 -out custom.key.nocrypt 
+sudo mv custom.key.nocrypt custom.key
+sudo chown root:root custom.key
+sudo chmod 600 custom.key
+sudo systemctl restart httpd
